@@ -37,7 +37,7 @@ jobs:
         run: |
           rm -rf content
           git clone --depth 1 \
-            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/dgg1dbg/obsidian-content.git \
+            https://x-access-token:${{ secrets.CONTENT_READ_TOKEN }}@github.com/dgg1dbg/obsidian-content.git \
             content
 
       - name: Install
