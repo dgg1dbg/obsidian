@@ -18,10 +18,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout (with submodules)
+      - name: Checkout quartz
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
 
       - name: Setup Node
@@ -32,6 +31,12 @@ jobs:
 
       - name: Upgrade npm
         run: npm i -g npm@^10.9.2
+
+      # ✅ 중요: content 최신을 빌드 시점에 가져오기
+      - name: Fetch latest content
+        run: |
+          rm -rf content
+          git clone --depth 1 --branch main https://github.com/dgg1dbg/obsidian-content.git content
 
       - name: Install
         run: npm ci
