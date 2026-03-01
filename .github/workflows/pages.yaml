@@ -36,7 +36,9 @@ jobs:
       - name: Fetch latest content
         run: |
           rm -rf content
-          git clone --depth 1 --branch main https://github.com/dgg1dbg/obsidian-content.git content
+          git clone --depth 1 \
+            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/dgg1dbg/obsidian-content.git \
+            content
 
       - name: Install
         run: npm ci
